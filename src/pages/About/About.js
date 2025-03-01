@@ -5,10 +5,10 @@ const ProfileCard = ({ avatar, name, description, location, role }) => (
     <div className="w-48 h-48 rounded-full mb-8 overflow-hidden border-6 border-white shadow-xl">
       <img src={avatar} alt={name} className="w-full h-full object-cover" />
     </div>
-    <h3 className="text-2xl font-bold text-[#203E40] mb-6 relative w-full">
-      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-px bg-gradient-to-l from-[#203E40] to-transparent"></div>
+    <h3 className="flex flex-row text-2xl font-bold text-[#203E40] mb-6 relative w-full">
+      <div className="left-0 my-auto transform -translate-y-1/2 w-full h-px bg-gradient-to-l from-[#203E40] to-transparent"></div>
       <span className="px-4">{name}</span>
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-px bg-gradient-to-r from-[#203E40] to-transparent"></div>
+      <div className=" right-0 my-auto transform -translate-y-1/2 w-full h-px bg-gradient-to-r from-[#203E40] to-transparent"></div>
     </h3>
     <p className="text-base text-gray-700 mb-6 px-4 min-h-[120px]">{description}</p>
     <div className="flex items-center mb-6">
@@ -93,7 +93,7 @@ const AboutUs = () => {
       <div className="flex justify-center my-12">
         <button className="bg-[#203E40] text-white rounded-full shadow-xl px-16 py-5 flex items-center gap-6 hover:bg-[#2c5a5c] transition-colors duration-300">
           <span className="text-2xl font-semibold">Go Back</span>
-          <img src="/img/backbutton.svg" alt="Back" className="w-8" />
+          <svg stroke="currentColor" fill="white" stroke-width="0" viewBox="0 0 16 16" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 010 .708L3.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M2.5 8a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
         </button>
       </div>
     </div>
@@ -101,3 +101,4 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+

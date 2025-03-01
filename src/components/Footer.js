@@ -27,10 +27,10 @@ const Footer = () => {
               <h2 className="text-xl font-medium mb-6">Learn More</h2>
               <ul className="space-y-3">
                 <li><Link to="/about" className="hover:opacity-80 transition-opacity">About Us</Link></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Press Releases</a></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Environment</a></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Jobs</a></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Privacy Policy</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Press Releases</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Environment</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Jobs</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Privacy Policy</a></li>
                 <li><Link to="/#contactUS" className="hover:opacity-80 transition-opacity">Contact Us</Link></li>
               </ul>
             </div>
@@ -39,8 +39,8 @@ const Footer = () => {
               <h2 className="text-xl font-medium mb-6">Case Studies</h2>
               <ul className="space-y-3">
                 <li><Link to="/case-study" className="hover:opacity-80 transition-opacity">Case Study #1</Link></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Case Study #2</a></li>
-                <li><a href="#" className="hover:opacity-80 transition-opacity">Case Study #3</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Case Study #2</a></li>
+                <li><a href="https://yourcompany.com/press-releases" className="hover:opacity-80 transition-opacity">Case Study #3</a></li>
               </ul>
             </div>
 
