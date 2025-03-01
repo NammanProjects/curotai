@@ -71,8 +71,8 @@ const AIPitCrew = () => {
             </svg>
           </button>
         </div>
-        <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden">
-          <div className="w-full h-full bg-[url('../public/img/AiPit.png')] bg-contain bg-no-repeat bg-center rounded-xl"></div>
+        <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[350px] sm:h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden">
+          <div className="w-full h-[350px] sm:h-full bg-[url('../public/img/AiPit.png')] bg-contain bg-no-repeat bg-center rounded-xl"></div>
         </div>
       </div>
       

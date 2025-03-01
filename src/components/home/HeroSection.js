@@ -28,9 +28,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-cover bg-[url('../public/img/background-image-1.png')] bg-center z-0 " />
       
       {/* Main Content Container */}
-      <div className="flex items-center justify-center relative lg:mt-[50px] z-10 w-screen min-h-screen  sm:mx-0 mb-[10px] md:mb-0">
+      <div className="flex items-center justify-center relative lg:mt-[50px] z-10 w-screen min-h-screen mt-[72px] xs:mt-0  sm:mx-0 mb-[10px] md:mb-0">
         
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-[80px] md:gap-10 lg:gap-7 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-[80px] md:gap-15 lg:gap-7 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
             {/* Left Content Column */}
             <motion.div 
               className="w-full lg:w-2/5 pt-10 lg:pt-0 order-2 lg:order-1 pl-4 sm:pl-6 lg:pl-8"
@@ -38,7 +38,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="max-w-lg mx-[20px] sm:mx-auto">
+              <div className="max-w-lg mx-[40px] xs:mx-20 sm:mx-auto">
                 <motion.h1 
                   className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight"
                   {...fadeInUp}

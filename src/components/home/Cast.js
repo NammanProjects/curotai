@@ -59,7 +59,7 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <div className="h-[72vh] bg-cover bg-[url('../public/img/background-image-0.png')] bg-center  ">
+    <div className="h-[72vh] min-h-[620px] bg-cover bg-[url('../public/img/background-image-0.png')] bg-center pt-[61px] ">
       <div className="mb-auto px-4 h-full flex flex-col justify-center pb-[60px] ">
         <div className="text-center mb-20">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#203e40]">

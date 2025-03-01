@@ -78,7 +78,7 @@ const WelcomeToCurota = () => {
       </div>
 
       {/* Main content */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto pb-[70px]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Why Curota card - First on mobile, left on desktop */}
           <div className="bg-white/10 rounded-2xl overflow-hidden h-auto md:h-full">
@@ -107,8 +107,8 @@ const WelcomeToCurota = () => {
               
               {/* Why Curota text */}
               <div className="mt-6 md:mt-8 block">
-                <h2 className="text-2xl md:text-3xl text-[#e7f6f4] font-semibold mb-3 block">
-                  Why  <img  src="./img/name-icon.svg" className="w-[167px] pb-2 inline" alt="Company Logo" class="logo"></img> ?
+                <h2 className="text-2xl md:text-3xl text-[#e7f6f4] font-semibold mb-3 block flex flex-row gap-2">
+                  <div>Why </div> <div className='max-w-[167px]  inline'><img  src="./img/name-icon.svg" className="max-w-[167px] pb-[7px] inline" alt="Company Logo" class="logo"></img></div> <div>!</div>
                 </h2>
                 <p className="text-sm md:text-base text-white/90">
                   Secure, compliant, cost-effective and domain expert led annotation services, 
@@ -145,7 +145,7 @@ const WelcomeToCurota = () => {
                 </p>
               </div>
               
-              <div className="md:col-span-3 ">
+              <div className="md:col-span-3  ">
                 <div className="grid grid-cols-2 gap-4 md:gap-12">
                   {metrics.map((metric, index) => (
                     <div key={index} className="text-[#203e40]">
