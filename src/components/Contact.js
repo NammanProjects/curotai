@@ -49,8 +49,8 @@ const ContactComponent = () => {
   };
 
   return (
-    <div id="contactUS" className="bg-[#203e40] flex flex-col overflow-hidden w-full">
-      <div className="bg-[#203e40] flex w-full flex-col px-2.5 sm:px-14 md:px-14 lg:px-[70px] lg:pt-0 pt-[40px] pb-[45px] md:pb-0 mx-auto max-w-[1440px]">
+    <div id="contactUS" className="bg-[#203e40] flex flex-col overflow-hidden w-full ">
+      <div className="bg-[#203e40] flex w-full flex-col px-2.5 sm:px-14 md:px-14 lg:px-[70px] lg:pt-0 pt-[70px] pb-[45px] md:pb-0 mx-auto max-w-[1440px]">
         <div className="flex flex-col relative min-h-[500px] md:min-h-[600px] lg:min-h-[624px] w-full max-w-full items-center mb-[-28px] lg:px-[70px] px-5 pb-20 md:pb-[100px] lg:pb-[160px]">
           {/* Desktop background image */}
           <img 

@@ -5,6 +5,8 @@ import PitCrewSection from '../../components/home/PitCrewSection';
 import WelcomeSection from '../../components/home/AnnotationServices';
 import WelcomeToCurota from '../../components/home/WelcomeToCurota';
 import Cast from '../../components/home/Cast';
+import CaseStudies from '../../components/home/CaseStudies';
+import FeaturedArticles from '../../components/home/FeaturedArticles';
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <div className="bg-[#203e40] pt-20 sm:pt-10 sm:pb-10">
         <WelcomeToCurota />
         <Cast/>
+        <FeaturedArticles/>
+        <CaseStudies/>
       </div>
     </div>
   );

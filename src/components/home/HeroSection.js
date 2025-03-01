@@ -22,15 +22,15 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="relative min-h-screen max-h-3/2 w-full bg-white overflow-hidden">
+    <section className="relative min-h-screen  w-full bg-white overflow-hidden">
       {/* Background Image */}
 
-      <div className="absolute inset-0 bg-cover bg-[url('../public/img/background-image-1.png')] bg-center z-0" />
-      <div className='m-[5vh] lg:m-0'></div>
+      <div className="absolute inset-0 bg-cover bg-[url('../public/img/background-image-1.png')] bg-center z-0 " />
+      
       {/* Main Content Container */}
-      <div className="relative z-10 w-full min-h-screen">
-        <div className="container m-auto h-screen">
-          <div className="flex flex-col lg:flex-row items-center justify-start h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
+      <div className="flex items-center justify-center relative lg:mt-[50px] z-10 w-screen min-h-screen  sm:mx-0 mb-[10px] md:mb-0">
+        
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-[80px] md:gap-10 lg:gap-7 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
             {/* Left Content Column */}
             <motion.div 
               className="w-full lg:w-2/5 pt-10 lg:pt-0 order-2 lg:order-1 pl-4 sm:pl-6 lg:pl-8"
@@ -38,17 +38,18 @@ const HeroSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="max-w-lg mx-auto">
+              <div className="max-w-lg mx-[20px] sm:mx-auto">
                 <motion.h1 
                   className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-6 leading-tight"
                   {...fadeInUp}
                 >
                   Secure, Scalable and Specialized{' '}
-                  <span className="text-teal-600">Annotations for AI</span>
+                  <br></br>
+                  <span className="">Annotations for AI</span>
                 </motion.h1>
                 
                 <motion.p 
-                  className="text-base sm:text-lg text-gray-800 mb-8 leading-relaxed"
+                  className="text-base sm:text-md text-gray-800 mb-8 leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -77,21 +78,21 @@ const HeroSection = () => {
 
             {/* Right Content Column - Stacked Frames */}
             <motion.div 
-              className="w-full lg:w-3/5 h-1/2 flex items-center justify-center sm:pt-0 lg:pt-0 order-1 lg:order-2"
+              className="w-full lg:w-3/5 h-1/2 flex items-center justify-center sm:pt-0 lg:pt-0 order-1 lg:order-2 "
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="ml-20 mt-[45px] lg:mt-0 relative w-[85vw] h-[48.7vw] sm:w-[75vw] sm:h-[43vw] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[850px] xl:h-[487px]"
+              <div className="ml-[100px] mt-[45px] lg:mt-0 relative w-[85vw] h-[48.7vw] sm:w-[75vw] sm:h-[43vw] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[850px] xl:h-[487px]"
                    style={{ maxWidth: '850px', maxHeight: '487px' }}>
                 
                 {/* Main Frame (Top level, least protrusion) */}
                 <div 
-                  className="absolute top-0 -left-[40px] w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden"
+                  className="absolute top-0 -left-[40px] w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[440px] max-w-[793px]"
                   style={{ zIndex: 30 }}
                 >
                   <FrameNav title="Drone_001" />
-                  <div className="relative h-[calc(100%-2rem)] sm:h-[calc(100%-2.5rem)]">
+                  <div className="relative h-[calc(100%-2rem)] sm:h-[calc(100%-2.5rem)] max-h-[400px] max-w-[793px]">
                     <div className="absolute inset-4 border-2 border-dashed border-white/50 rounded-xl z-20" />
                     <video 
                       className="w-full h-full object-cover"
@@ -105,7 +106,7 @@ const HeroSection = () => {
 
                 {/* Middle Frame (Medium protrusion) */}
                 <div 
-                  className="absolute top-[35px] -left-[60px] w-full h-full bg-green-200/50 rounded-2xl shadow-xl overflow-hidden"
+                  className="absolute top-[35px] -left-[60px] w-full h-full bg-green-200/50 rounded-2xl shadow-xl overflow-hidden max-h-[440px] max-w-[793px]"
                   style={{
                     transform: 'scale(0.99)',
                     zIndex: 20
@@ -119,7 +120,7 @@ const HeroSection = () => {
 
                 {/* Bottom Frame (Most protrusion) */}
                 <div 
-                  className="absolute top-[70px] -left-[80px] w-full h-full bg-green-100/40 rounded-2xl shadow-lg overflow-hidden"
+                  className="absolute top-[70px] -left-[80px] w-full h-full bg-green-100/40 rounded-2xl shadow-lg overflow-hidden max-h-[440px] max-w-[793px]"
                   style={{
                     transform: 'scale(0.98)',
                     zIndex: 10
@@ -133,7 +134,7 @@ const HeroSection = () => {
               </div>
             </motion.div>
           </div>
-        </div>
+        
       </div>
     </section>
   );

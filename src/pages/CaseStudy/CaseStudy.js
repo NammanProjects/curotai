@@ -132,7 +132,7 @@ const CaseStudy = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className=" mx-auto px-4 py-12">
         <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
           <ContentSection id="Introduction" title="Introduction">
             <p className="text-lg text-gray-800 leading-relaxed">

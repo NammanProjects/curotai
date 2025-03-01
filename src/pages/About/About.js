@@ -70,7 +70,7 @@ const AboutUs = () => {
   return (
     <div className="bg-[#F0F8F8] min-h-screen flex flex-col">
       <div className="w-full bg-[url('../public/img/background-image-0.png')] text-center py-16 mb-8">
-      <div className='m-[15vh]'></div>
+      <div className='m-[18vh]'></div>
         <div className="container mx-auto px-4">
           <div className="flex justify-center mb-6">
             <img src="/img/skiled-force.png" alt="Skilled Force Icon" className="h-24" />
@@ -82,7 +82,7 @@ const AboutUs = () => {
         <div className='m-[5vh]'></div>
       </div>
 
-      <div className="container mx-auto px-4 pt-[50px] flex-grow">
+      <div className="mx-auto px-4 pt-[50px] flex-grow">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {teamMembers.map((member, index) => (
             <ProfileCard key={index} {...member} />

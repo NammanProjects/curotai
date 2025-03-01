@@ -66,7 +66,7 @@ const WelcomeToCurota = () => {
             Welcome to
           </span>
           <span className="text-[#e7f6f4] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
-            CUROTA.ai
+          <img src="./img/name-icon.svg" className="w-[260px] pb-1.5 inline" alt="Company Logo" class="logo"></img>
           </span>
           <span className="text-[#e7f6f4] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
             !
@@ -108,7 +108,7 @@ const WelcomeToCurota = () => {
               {/* Why Curota text */}
               <div className="mt-6 md:mt-8 block">
                 <h2 className="text-2xl md:text-3xl text-[#e7f6f4] font-semibold mb-3 block">
-                  Why CUROTA.ai ?
+                  Why  <img  src="./img/name-icon.svg" className="w-[167px] pb-2 inline" alt="Company Logo" class="logo"></img> ?
                 </h2>
                 <p className="text-sm md:text-base text-white/90">
                   Secure, compliant, cost-effective and domain expert led annotation services, 
@@ -132,9 +132,9 @@ const WelcomeToCurota = () => {
         </div>
 
         {/* Metrics section */}
-        <div className="mt-[90px] md:mt-[90px] mb-8 mx-0 md:mx-[120px] ">
-          <div className="bg-white/5 rounded-2xl p-6 md:p-8 bg-[url('../public/img/background-image-1.png')]">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+        <div className="mt-[90px] md:mt-[90px] mb-8 mx-0 md:mx-[180px] ">
+          <div className="bg-white/5 rounded-2xl p-6 md:p-8 bg-[url('../public/img/background-image-0.png')]">
+            <div className="grid grid-cols-1 md:grid-cols-8 gap-6 md:gap-8">
               <div className="md:col-span-5">
                 <h3 className="text-2xl md:text-3xl lg:text-4xl text-[#203e40] font-semibold mb-2 md:mb-4">
                   Metrics
@@ -145,8 +145,8 @@ const WelcomeToCurota = () => {
                 </p>
               </div>
               
-              <div className="md:col-span-7 ">
-                <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <div className="md:col-span-3 ">
+                <div className="grid grid-cols-2 gap-4 md:gap-12">
                   {metrics.map((metric, index) => (
                     <div key={index} className="text-[#203e40]">
                       <div className="text-2xl md:text-3xl lg:text-4xl font-bold mb-1 font-sans">

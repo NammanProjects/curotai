@@ -7,7 +7,7 @@ const TestimonialCarousel = () => {
       id: 1,
       name: "Johnathon Dome",
       title: "Data Engineer, DJI",
-      image: "/api/placeholder/80/80",
+      image: "/img/carosuel-person.png",
       country: "de",
       text: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante."
     },
@@ -15,14 +15,16 @@ const TestimonialCarousel = () => {
       id: 2,
       name: "Johnathon Dome",
       title: "Data Engineer, DJI",
-      image: "/api/placeholder/80/80",
+      image: "/img/carosuel-person.png",
+      country: "de",
       text: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante."
     },
     {
       id: 3,
       name: "Johnathon Dome",
       title: "Data Engineer, DJI",
-      image: "/api/placeholder/80/80",
+      image: "/img/carosuel-person.png",
+      country: "de",
       text: "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante."
     }
   ];
@@ -58,7 +60,7 @@ const TestimonialCarousel = () => {
 
   return (
     <div className="h-[72vh] bg-cover bg-[url('../public/img/background-image-0.png')] bg-center  ">
-      <div className="mb-auto px-4 h-full flex flex-col justify-center ">
+      <div className="mb-auto px-4 h-full flex flex-col justify-center pb-[60px] ">
         <div className="text-center mb-20">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#203e40]">
             Why Trust us?
