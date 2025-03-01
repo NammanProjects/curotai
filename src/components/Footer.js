@@ -112,7 +112,7 @@ const Footer = () => {
             <img 
               src="/img/wordmark1.png" 
               alt="Curota.ai watermark"
-              className="w-full opacity-15 object-fit object-center h-20 md:h-27"
+              className="w-full opacity-15 object-fit object-center h-17 md:h-27"
             />
           </div>
         </div>

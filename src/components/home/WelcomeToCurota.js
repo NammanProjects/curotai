@@ -132,7 +132,7 @@ const WelcomeToCurota = () => {
         </div>
 
         {/* Metrics section */}
-        <div className="mt-[90px] md:mt-[90px] mb-8 mx-0 md:mx-[180px] ">
+        <div className="mt-[90px] md:mt-[90px] mb-8 mx-0 lg:mx-[180px] ">
           <div className="bg-white/5 rounded-2xl p-6 md:p-8 bg-[url('../public/img/background-image-0.png')]">
             <div className="grid grid-cols-1 md:grid-cols-8 gap-6 md:gap-8">
               <div className="md:col-span-5">

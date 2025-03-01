@@ -66,8 +66,8 @@ const CaseStudies = () => {
 
   return (
     <div className="bg-[url('../public/img/background-image-0.png')] py-16">
-      <div className="mx-auto px-4 min-h-[61vh] pt-[3vh]">
-        <h2 className="text-4xl md:text-5xl font-bold text-black text-center mb-12">Case Studies</h2>
+      <div className="mx-auto px-4 min-h-[58vh] pt-[4vh]">
+        <h2 className="text-4xl md:text-5xl font-bold text-black text-center mb-[60px]">Case Studies</h2>
         
         <div className="relative">
           <button 
@@ -116,7 +116,7 @@ const CaseStudies = () => {
         </div>
         
         {/* Progress bar */}
-        <div className="mt-6 max-w-md mx-auto h-1 bg-gray-300 rounded-full overflow-hidden">
+        <div className="mt-6 max-w-[140px] md:max-w-md  mx-auto h-1 bg-gray-300 rounded-full overflow-hidden">
           <div 
             className="h-full bg-teal-400 transition-all duration-300"
             style={{ width: `${scrollProgress}%` }}

@@ -37,7 +37,7 @@ const AIPitCrew = () => {
       </div>
 
       {/* Rest of your content... */}
-      <div className="pb-[85px] px-10 min-h-[70vh] max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-0 md:gap-10 pt-0 sm:pt-[4vw]">
+      <div className="pb-[85px] px-10 min-h-[67vh] max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-0 md:gap-10 pt-0 sm:pt-[4vw]">
         <div className="w-full lg:w-[45%] order-2 lg:order-1">
           <h2 className="text-3xl md:text-5xl font-bold text-[#cfebe7] mb-6">
             Your AI Pit Crew

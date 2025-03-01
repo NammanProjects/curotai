@@ -64,7 +64,7 @@ const ServiceCard = ({ title, image, index }) => {
       onHoverStart={() => !isMobile && setIsActive(true)}
       onHoverEnd={() => !isMobile && setIsActive(false)}
       onClick={handleInteraction}
-      className="w-[350px] bg-white rounded-[24px] shadow-lg transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden cursor-pointer"
+      className="w-[340px] bg-white rounded-[24px] shadow-lg transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden cursor-pointer"
     >
       {/* Default State */}
       <motion.div

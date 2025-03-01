@@ -62,7 +62,7 @@ const FeaturedArticles = () => {
         <div className="relative">
           <button 
             onClick={scrollLeft}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg h-12 w-12 flex items-center justify-center"
+            className="absolute left-1 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg h-12 w-12 flex items-center justify-center"
             aria-label="Previous article"
           >
             <span className="sr-only">Previous</span>
@@ -100,7 +100,7 @@ const FeaturedArticles = () => {
 
           <button 
             onClick={scrollRight}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg h-12 w-12 flex items-center justify-center"
+            className="absolute right-1 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg h-12 w-12 flex items-center justify-center"
             aria-label="Next article"
           >
             <span className="sr-only">Next</span>
@@ -109,7 +109,7 @@ const FeaturedArticles = () => {
         </div>
         
         {/* Progress bar */}
-        <div className="mt-8 max-w-md mx-auto h-1.5 bg-gray-400 rounded-full overflow-hidden flex">
+        <div className="mt-8 max-w-[140px] lg:max-w-md mx-auto h-1.5 bg-gray-400 rounded-full overflow-hidden flex">
           <div 
             className="h-full bg-teal-400 rounded-full transition-all duration-300"
             style={{ width: `${scrollProgress}%` }}
