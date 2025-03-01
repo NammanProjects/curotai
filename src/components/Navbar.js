@@ -1,5 +1,5 @@
 // Header.js
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import MobileNav from './MobileNav';
@@ -11,7 +11,6 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState(null);
   const location = useLocation();
-  const navRefs = useRef([]);
   
   const vh = typeof window !== 'undefined' ? window.innerHeight : 0;
 
