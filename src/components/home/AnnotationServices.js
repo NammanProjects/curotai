@@ -36,8 +36,8 @@ const AnnotationServices = () => {
   };
 
   return (
-    <div className="py-20 px-[46px] bg-[url('../public/img/background-image-0.png')] bg-cover bg-center overflow-hidden min-h-[81vh]">
-      <div className="max-w-screen mx-auto text-center mb-[30px]">
+    <div className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[46px] bg-[url('../public/img/background-image-0.png')] bg-cover bg-center overflow-hidden min-h-[81vh]">
+      <div className="max-w-screen-xl mx-auto text-center mb-6 sm:mb-[30px]">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const AnnotationServices = () => {
             duration: 0.5, 
             ease: "easeOut"
           }}
-          className="text-4xl md:text-5xl font-bold text-[#203e40]"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#203e40]"
         >
           Our Services
         </motion.h1>
@@ -56,7 +56,7 @@ const AnnotationServices = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="flex flex-wrap justify-center gap-6 mt-[60px]"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-[100px] mt-8 sm:mt-10 md:mt-[60px] justify-items-center"
         >
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} index={index} />

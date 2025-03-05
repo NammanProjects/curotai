@@ -8,10 +8,10 @@ export default {
       },
     },
     screens: {
-      'xs': '430px',    // Extra small devices
+      'xs': '359px',    // Extra small devices
       'sm': '640px',    // Small devices
       'md': '768px',    // Medium devices
-      'lg': '1024px',   // Large devices
+      'lg': '1030px',   // Large devices
       'xl': '1280px',   // Extra large devices
       '2xl': '1536px',  // 2X large devices
     },

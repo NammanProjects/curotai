@@ -1,12 +1,17 @@
 // MobileNav.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, ArrowLeft } from 'lucide-react';
 
-const MobileNav = () => {
+const MobileNav = ({ navItems, caseStudyItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  // Close menu when location changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   const menuVariants = {
     closed: {
@@ -27,22 +32,29 @@ const MobileNav = () => {
     }
   };
 
-  const navItems = [
-    { text: "Home", to: "/" },
-    { text: "Case Study", to: "/case-study" },
-    { text: "About Us", to: "/about" }
-  ];
-
   const isActive = (path) => {
     return location.pathname === path || 
            (location.pathname.startsWith(path) && path !== '/');
   };
+
+  // Add Articles and ensure we have the full navigation set
+  const fullNavItems = [
+    { text: "Home", to: "/" },
+    { text: "Case Study", to: "/case-study", hasDropdown: true },
+    { text: "Articles", to: "/articles" },
+    { text: "Services", to: "/services" },
+    { text: "About Us", to: "/about" }
+  ];
+
+  // Combine with provided navItems if available
+  const navigationItems = navItems || fullNavItems;
 
   return (
     <div className="lg:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="p-2 rounded-full hover:bg-[#2d5254] transition-colors duration-300"
+        aria-label="Toggle navigation menu"
       >
         <Menu className="w-6 h-6 text-white" />
       </button>
@@ -54,55 +66,95 @@ const MobileNav = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-[#203e40] z-50"
+            className="fixed inset-0 bg-[#203e40] z-50 flex flex-col"
           >
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-8">
-                <Link to="/" onClick={() => setIsOpen(false)}>
-                  <div className="h-[60px] w-[120px] bg-[('../public/img/backbutton.svg')] bg-cover bg-center"></div>
-                </Link>
+            <div className="flex-1 overflow-y-auto p-4 pt-6 flex flex-col">
+              {/* Go Back Button - Updated styling to match image */}
+              <div className="mb-12 flex justify-between">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-full hover:bg-[#2d5254] transition-colors duration-300"
+                  className="flex items-center gap-2 bg-[#d1e5e1] text-[#203e40] px-6 py-3 rounded-full font-medium"
                 >
-                  <X className="w-6 h-6 text-white" />
+                  <ArrowLeft className="w-5 h-5 text-[#203e40]" />
+                  <span>Go Back</span>
                 </button>
+                
+                {/* Logo in top right as shown in image */}
+                <div className="w-10 h-10 overflow-hidden bg-[#304d4f]">
+                  <img src="/img/Curota_logo_Dark.svg" alt="Logo" className="w-full h-full object-contain opacity-60" />
+                </div>
               </div>
 
-              <nav className="flex flex-col space-y-6">
-                {navItems.map((item, index) => (
-                  <motion.div key={index} whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
+              {/* "Get in touch" title with wider divider lines */}
+              <div className="flex items-center justify-center mt-[100px] px-4">
+                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-gray-400"></div>
+                <h2 className="text-gray-300 text-xl px-6">Get in touch</h2>
+                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-gray-400"></div>
+              </div>
+
+              {/* Nav Links */}
+              <nav className="flex flex-col mt-auto">
+                {navigationItems.map((item, index) => (
+                  <div key={index} className="mb-6 flex items-center relative">
+                    {/* Vertical active indicator on left */}
+                    {isActive(item.to) && (
+                      <div className="absolute left-0 top-0 w-1.5 h-full bg-white rounded-r-full" />
+                    )}
+                    
                     <Link
                       to={item.to}
-                      className={`text-white text-xl relative group ${
-                        isActive(item.to) ? 'font-medium' : ''
-                      }`}
-                      onClick={() => setIsOpen(false)}
+                      className={`text-white text-3xl flex items-center relative pl-6`}
                     >
-                      {item.text}
-                      <span className={`absolute -bottom-1 left-0 h-[2px] bg-white 
-                                    transition-all duration-300 group-hover:w-full ${
-                                      isActive(item.to) ? 'w-full' : 'w-0'
-                                    }`} />
+                      <span className="py-1">{item.text}</span>
+                      {item.hasDropdown && (
+                        <svg width="24" height="24" viewBox="0 0 24 24" className="ml-2 opacity-70">
+                          <path 
+                            d="M7 17L17 7M17 7H7M17 7V17" 
+                            stroke="currentColor" 
+                            strokeWidth="2" 
+                            fill="none"
+                          />
+                        </svg>
+                      )}
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </nav>
 
-              <motion.div className="mt-8">
-                <motion.a
-                  href="#contactUS"
-                  className="block w-full text-center bg-white text-[#203e40] font-medium 
-                           rounded-[16px] px-6 py-3 shadow-[0_0_10px_rgba(255,255,255,0.2)]
-                           hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]
-                           transition-all duration-300"
-                  onClick={() => setIsOpen(false)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+              {/* Social Media Links */}
+              <div className="flex justify-center gap-6 mt-20 mb-8">
+                <a 
+                  href="https://linkedin.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1e3536] hover:bg-[#2a4749] transition-colors text-white px-4 py-3 rounded-md flex items-center gap-2"
                 >
-                  GET IN TOUCH!
-                </motion.a>
-              </motion.div>
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+                  </svg>
+                  <span>Linkedin</span>
+                </a>
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-[#1e3536] hover:bg-[#2a4749] transition-colors text-white px-4 py-3 rounded-md flex items-center gap-2"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                  </svg>
+                  <span>Instagram</span>
+                </a>
+              </div>
+              
+              {/* Logo placement at the bottom */}
+              <div className="w-full max-w-[800px] px-4">
+            <img 
+              src="/img/wordmark1.png" 
+              alt="Curota.ai watermark"
+              className="w-full opacity-15 object-fit object-center h-17 md:h-27"
+            />
+          </div>
             </div>
           </motion.div>
         )}

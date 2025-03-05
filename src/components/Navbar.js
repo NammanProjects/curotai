@@ -10,6 +10,7 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [showCaseStudyDropdown, setShowCaseStudyDropdown] = useState(false);
   const location = useLocation();
   
   const vh = typeof window !== 'undefined' ? window.innerHeight : 0;
@@ -37,9 +38,15 @@ const Header = () => {
 
   const navItems = [
     { text: "Home", to: "/" },
-    { text: "Case Study", to: "/case-study" },
+    { text: "Case Study", to: "/case-study", hasDropdown: true },
     { text: "Services", to: "/services" },
     { text: "About Us", to: "/about" }
+  ];
+
+  const caseStudyItems = [
+    { text: "Case Study 1", to: "/case-study/1" },
+    { text: "Case Study 2", to: "/case-study/2" },
+    { text: "Case Study 3", to: "/case-study/3" },
   ];
 
   // Manual positions for each nav item
@@ -71,6 +78,48 @@ const Header = () => {
     return activeItem !== -1 ? activeItem : 0; // Default to Home if no match
   };
 
+  const handleNavItemHover = (index) => {
+    setHoveredItem(index);
+    // Only show dropdown for Case Study (index 1)
+    if (index === 1) {
+      setShowCaseStudyDropdown(true);
+    } else {
+      setShowCaseStudyDropdown(false);
+    }
+  };
+
+  const handleNavItemLeave = () => {
+    setHoveredItem(null);
+    // Add a slight delay before hiding dropdown to make it easier to move cursor to dropdown
+    setTimeout(() => {
+      setShowCaseStudyDropdown(false);
+    }, 300);
+  };
+
+  // Dropdown variants for animation
+  const dropdownVariants = {
+    hidden: { 
+      opacity: 0,
+      y: -10,
+      transition: {
+        duration: 0.2
+      }
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -5 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -86,7 +135,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="w-[90%] max-w-[1300px] rounded-[40px] bg-[#203e40] p-5"
+              className="w-[90%] max-w-[1300px] rounded-[40px] px-5 bg-[#203e40]"
               style={{ backgroundColor }}
             >
               <div className="flex justify-between items-center">
@@ -97,28 +146,56 @@ const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   > 
-                    <div className="bg-[url('../public/img/Curota_logo_Dark.svg')] bg-cover bg-center h-9 w-9 ml-4"></div>
-                    <div className="bg-[url('../public/img/curota-name-icon.png')] bg-cover bg-center h-6 w-[165px] "></div>
+                    <div className="bg-[url('../public/img/Curota_logo_Dark.svg')] bg-cover bg-center h-8 w-8 ml-4"></div>
+                    <div className="bg-[url('../public/img/curota-name-icon.png')] bg-cover bg-center h-5 w-[130px] md:h-6 md:w-[165px]  m-5 ml-0 "></div>
                   </motion.div>
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center h-full">
+                <div className="hidden lg:flex items-center h-[84px]">
                   <div className="flex items-center justify-between h-full relative w-[400px]">
                     {navItems.map((item, index) => (
                       <div 
                         key={item.to}
-                        className="h-full flex items-center justify-center"
-                        onMouseEnter={() => setHoveredItem(index)}
-                        onMouseLeave={() => setHoveredItem(null)}
+                        className="h-full flex items-center justify-center relative"
+                        onMouseEnter={() => handleNavItemHover(index)}
+                        onMouseLeave={handleNavItemLeave}
                       >
                         <NavButton text={item.text} to={item.to} currentPath={location.pathname} />
+                        
+                        {/* Case Study Dropdown */}
+                        {item.hasDropdown && showCaseStudyDropdown && (
+                          <AnimatePresence>
+                            <motion.div
+                              className="absolute top-full left-1/2 transform -translate-x-1/2 bg-white rounded-xl shadow-lg overflow-hidden w-48 z-50"
+                              initial="hidden"
+                              animate="visible"
+                              exit="hidden"
+                              variants={dropdownVariants}
+                            >
+                              {caseStudyItems.map((dropdownItem, idx) => (
+                                <motion.div
+                                  key={dropdownItem.to}
+                                  variants={itemVariants}
+                                  className="border-b border-gray-100 last:border-b-0"
+                                >
+                                  <Link 
+                                    to={dropdownItem.to}
+                                    className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#203e40] transition-colors duration-200 text-sm font-medium"
+                                  >
+                                    {dropdownItem.text}
+                                  </Link>
+                                </motion.div>
+                              ))}
+                            </motion.div>
+                          </AnimatePresence>
+                        )}
                       </div>
                     ))}
                     
                     {/* Animated indicator bar with manual positions and widths */}
                     <motion.div
-                      className="absolute h-[10px] bg-white rounded-t-lg bottom-[-30px]"
+                      className="absolute h-[10px] bg-white rounded-t-lg bottom-[-0px]"
                       animate={{ 
                         left: `${getNavItemPosition(hoveredItem !== null ? hoveredItem : getActiveIndex())}%`,
                         width: `${getButtonWidth(hoveredItem !== null ? hoveredItem : getActiveIndex())}px`
@@ -142,7 +219,7 @@ const Header = () => {
                 </div>
 
                 {/* Mobile Navigation */}
-                <MobileNav navItems={navItems} />
+                <MobileNav navItems={navItems} caseStudyItems={caseStudyItems} />
               </div>
             </motion.div>
           </nav>

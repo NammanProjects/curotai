@@ -32,12 +32,12 @@ const AIPitCrew = () => {
                 </div>
               ))}
             </div>
-          ))}
+          ))};
         </div>
       </div>
 
       {/* Rest of your content... */}
-      <div className="pb-[85px] px-10 min-h-[67vh] max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-0 md:gap-10 pt-0 sm:pt-[4vw]">
+      <div className="pb-[85px] px-4 min-h-[67vh] max-w-[1440px] mx-[10px] sm:mx-auto flex flex-col lg:flex-row gap-0 md:gap-10 pt-0 sm:pt-[4vw]">
         <div className="w-full lg:w-[45%] order-2 lg:order-1">
           <h2 className="text-3xl md:text-5xl font-bold text-[#cfebe7] mb-6">
             Your AI Pit Crew
@@ -51,7 +51,7 @@ const AIPitCrew = () => {
           <p className="text-lg text-white mb-8">
             At Curota.ai, we understand that accurate and precise data labeling is the cornerstone of successful AI/ML initiatives.
           </p>
-          <button className=" bg-white text-[#203e40] w-[300px] px-6 py-3 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
+          <button className=" bg-white text-[#203e40] max-w-[300px] px-6 py-3 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
             <div className="inline">
             Client Stories
             </div>
@@ -75,7 +75,7 @@ const AIPitCrew = () => {
             </div>
           </button>
         </div>
-        <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[350px] sm:h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden">
+        <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[300px] sm:h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden  xs:mb-[20px]">
           <div className="w-full h-[350px] sm:h-full bg-[url('../public/img/AiPit.png')] bg-contain bg-no-repeat bg-center rounded-xl"></div>
         </div>
       </div>

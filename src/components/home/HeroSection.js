@@ -85,14 +85,14 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="relative min-h-[calc(100vh-64px)] xs:h-[calc(100vh-64px)] w-full bg-white overflow-hidden">
+    <section className="relative min-h-screen md:min-h-[calc(100vh-64px)] lg:h-[calc(100vh-64px)] w-full bg-white overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-[url('../public/img/background-image-1.png')] bg-center z-0" />
       
       {/* Main Content Container */}
-      <div className="flex items-center justify-center relative z-10 w-screen min-h-screen mt-[45px] xs:mt-0 sm:mx-0 mb-[10px] md:mb-0">
+      <div className="flex items-center justify-center relative z-10 w-screen min-h-screen xs:mx-0 md:mt-0 mt-[60px] pb-[50px] md:pb-[60px] sm:pb-[20px] md:mb-0">
         
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-[65px] md:gap-15 lg:gap-15 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-[50px] md:gap-15 lg:gap-15 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
           {/* Left Content Column */}
           <motion.div 
             className="w-full lg:w-2/5 pt-10 lg:pt-0 order-2 lg:order-1 pl-4 sm:pl-6 lg:pl-8"
@@ -100,21 +100,21 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="max-w-lg mx-[40px] xs:mx-20 sm:mx-auto">
+            <div className="max-w-lg mx-[30px] xs:mx-[35px] sm:mx-auto">
             <motion.button
-                className="inline-flex items-center justify-center  py-[5px] pr-3 border-[1.5px] border-teal-500 text-black text-sm font-thin rounded-xl mb-[20px]
+                className="inline-flex items-center justify-center  py-[5px] pr-3 border-[1.5px] border-teal-500 text-black text-sm font-semibold rounded-xl mb-[30px]
                           transform transition-all duration-300 shadow-lg font-sans text-center active:scale-95 sm:text-lg"
               >
                 <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-400 mr-2 ml-3"></div>
                 Zero Trust-Security
               </motion.button>
               <motion.h1 
-                className="text-2xl sm:text-3xl lg:text-[50px] font-bold text-black mb-6 leading-tight"
+                className="text-2xl sm:text-3xl lg:text-[30px] xl:text-[45px] font-bold text-black mb-6 leading-tight"
                 {...fadeInUp}
               >
                 Secure, Scalable{' '}
                 <br></br>
-                <div className="md:mt-6">Annotations for AI</div>
+                <div className="md:mt-5">Annotations for AI</div>
               </motion.h1>
               
               <motion.p 
@@ -131,7 +131,7 @@ const HeroSection = () => {
               </motion.p>
               <div className='flex flex-row gap-2'>
               <motion.button
-                className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white text-lg font-semibold rounded-xl w-full
+                className="inline-flex items-center justify-center px-6 py-3 bg-teal-500 text-white text-md font-semibold rounded-xl w-full
                           hover:bg-teal-600 transform transition-all duration-300 shadow-lg font-sans text-center 
                           hover:shadow-xl active:scale-95 sm:text-xl"
                 whileHover={{ scale: 1.05 }}
@@ -145,7 +145,7 @@ const HeroSection = () => {
               <motion.button
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#C1DBD8] text-[#284A4E] font-semibold rounded-xl w-full
                           transform transition-all duration-300 shadow-lg font-sans text-center 
-                          hover:shadow-xl active:scale-95 text-lg sm:text-xl"
+                          hover:shadow-xl active:scale-95 text-md sm:text-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0 }}
@@ -165,12 +165,12 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="ml-[100px] mt-[45px] lg:mt-0 relative w-[85vw] h-[48.7vw] sm:w-[75vw] sm:h-[43vw] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[733px] xl:h-[487px] "
+            <div className="ml-[100px] mt-[45px] lg:mt-0 relative w-[90vw] h-[35.7vh] sm:w-[90vw] sm:h-[43vw] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[733px] xl:h-[487px] "
                  style={{ maxWidth: '850px', maxHeight: '487px' }}>
               
               {/* Bottom Frame (Most protrusion, lowest z-index) */}
               <div 
-                className="absolute top-[44px] -left-[84px] w-full h-full rounded-2xl overflow-hidden border-[1.5px] border-gray-300 max-h-[440px] max-w-[733px]"
+                className="absolute top-[20px] -left-[60px] xs:top-[44px] xs:-left-[84px] w-full h-full rounded-2xl overflow-hidden border-[1.5px] border-gray-300 max-h-[440px] max-w-[733px]"
                 style={{
                   transform: 'scale(0.98)',
                   zIndex: 10,
@@ -186,7 +186,7 @@ const HeroSection = () => {
 
               {/* Middle Frame (Medium protrusion, middle z-index) */}
               <div 
-                className="absolute top-[22px] -left-[62px] w-full h-full rounded-2xl border-[1.5px] border-gray-300 overflow-hidden max-h-[440px] max-w-[733px]"
+                className="absolute top-[10px] -left-[50px] xs:top-[22px] xs:-left-[62px] w-full h-full rounded-2xl border-[1.5px] border-gray-300 overflow-hidden max-h-[440px] max-w-[733px]"
                 style={{
                   transform: 'scale(0.99)',
                   zIndex: 20,
@@ -202,7 +202,7 @@ const HeroSection = () => {
 
               {/* Main Frame (Top level, highest z-index) */}
               <div 
-                className="absolute top-0 -left-[40px] w-full h-full rounded-2xl overflow-hidden max-h-[440px] max-w-[733px]"
+                className="absolute top-0 -left-[20px] xs:-left-[40px] w-full h-full rounded-2xl overflow-hidden max-h-[440px] max-w-[733px]"
                 style={{ 
                   zIndex: 30,
                   background: 'rgba(255, 255, 255, 0.9)',

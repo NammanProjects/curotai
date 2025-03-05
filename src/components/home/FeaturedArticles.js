@@ -56,7 +56,7 @@ const FeaturedArticles = () => {
 
   return (
     <div className="bg-[#1e3536] py-16">
-      <div className="mx-auto px-4">
+      <div className="mx-auto px-2">
         <h2 className="text-4xl md:text-5xl font-bold text-[#C6E7E2] text-center mb-16">Featured Articles</h2>
         
         <div className="relative">
@@ -81,7 +81,7 @@ const FeaturedArticles = () => {
             {articles.map((article) => (
               <div 
                 key={article.id}
-                className="w-[91vw] md:w-[469px] flex-none snap-center"
+                className="w-[85vw] sm:w-[91vw] md:w-[469px] flex-none snap-center"
               >
                 <div className="rounded-3xl overflow-hidden h-[318px] border-2 border-[#2c4547]">
                   <div className="relative h-[70%] overflow-hidden">
