@@ -22,7 +22,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY+108;
+      const currentScrollY = window.scrollY+170;
       if (currentScrollY >= vh) {
         setIsVisible(false);
       } else {
@@ -86,7 +86,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="w-[90%] max-w-[1300px] rounded-[40px] bg-[#203e40] p-6"
+              className="w-[90%] max-w-[1300px] rounded-[40px] bg-[#203e40] p-5"
               style={{ backgroundColor }}
             >
               <div className="flex justify-between items-center">
@@ -96,7 +96,7 @@ const Header = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
+                  > 
                     <div className="bg-[url('../public/img/Curota_logo_Dark.svg')] bg-cover bg-center h-9 w-9 ml-4"></div>
                     <div className="bg-[url('../public/img/curota-name-icon.png')] bg-cover bg-center h-6 w-[165px] "></div>
                   </motion.div>
@@ -118,7 +118,7 @@ const Header = () => {
                     
                     {/* Animated indicator bar with manual positions and widths */}
                     <motion.div
-                      className="absolute h-[10px] bg-white rounded-t-lg bottom-[-34px]"
+                      className="absolute h-[10px] bg-white rounded-t-lg bottom-[-30px]"
                       animate={{ 
                         left: `${getNavItemPosition(hoveredItem !== null ? hoveredItem : getActiveIndex())}%`,
                         width: `${getButtonWidth(hoveredItem !== null ? hoveredItem : getActiveIndex())}px`

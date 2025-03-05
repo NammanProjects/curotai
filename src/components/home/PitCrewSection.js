@@ -2,7 +2,7 @@ import React from "react";
 
 const AIPitCrew = () => {
   const logos = [
-    { id: 1, url: '/img/Google-Cloud-Logo.jpg' },
+    { id: 1, url: '/img/googlelogo.png' },
     { id: 2, url: '/img/dgi.png' },
     { id: 3, url: '/img/uber.png' },
   ];
@@ -10,7 +10,7 @@ const AIPitCrew = () => {
   return (
     <div className="bg-[#203e40]">
       {/* Animated Logo Strip */}
-      <div className="w-full bg-[#203e40] overflow-hidden relative py-2 md:py-3 lg:py-4">
+      <div className="w-full bg-[#203e40] overflow-hidden relative py-2 md:py-3 lg:py-3">
         <div className="flex gap-8 logo-animation">
           {/* Duplicating logos for smooth loop */}
           {[...Array(6)].map((_, setIndex) => (
@@ -23,7 +23,7 @@ const AIPitCrew = () => {
                   <img
                     src={logo.url}
                     alt="Partner Logo"
-                    className="w-[80px] md:w-[100px] lg:w-[120px] h-[30px] md:h-[35px] lg:h-[40px] object-contain opacity-80"
+                    className="w-[80px] md:w-[100px] lg:w-[105px] h-[30px] md:h-[35px] lg:h-[40px] object-contain opacity-80"
                     style={{ 
                       filter: 'brightness(0) invert(1) hue-rotate(90deg)',
                       imageRendering: 'crisp-edges'
@@ -51,8 +51,11 @@ const AIPitCrew = () => {
           <p className="text-lg text-white mb-8">
             At Curota.ai, we understand that accurate and precise data labeling is the cornerstone of successful AI/ML initiatives.
           </p>
-          <button className="bg-white text-[#203e40] px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-opacity-90 transition-all">
+          <button className=" bg-white text-[#203e40] w-[300px] px-6 py-3 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
+            <div className="inline">
             Client Stories
+            </div>
+            <div>
             <svg 
               width="24" 
               height="24" 
@@ -69,6 +72,7 @@ const AIPitCrew = () => {
                 strokeLinejoin="round"
               />
             </svg>
+            </div>
           </button>
         </div>
         <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[350px] sm:h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden">

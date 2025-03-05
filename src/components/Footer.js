@@ -15,11 +15,7 @@ const Footer = () => {
                   className="aspect-square object-contain w-28"
                   alt="Company logo" 
                 />
-                <img 
-                  src="/img/curota-img.png" 
-                  className="aspect-[5.99] object-contain w-[114px] mt-5"
-                  alt="Company name" 
-                />
+                
               </Link>
             </div>
 
