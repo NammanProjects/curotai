@@ -8,7 +8,7 @@ export default {
       },
     },
     screens: {
-      'xs': '359px',    // Extra small devices
+      'xs': '343px',    // Extra small devices
       'sm': '640px',    // Small devices
       'md': '768px',    // Medium devices
       'lg': '1030px',   // Large devices

@@ -22,7 +22,7 @@
   
   /* Keep everything else as the default tailwind font stack */
   body, .font-thin, .font-extralight, .font-light, .font-normal, .font-medium {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
   }
 }
 

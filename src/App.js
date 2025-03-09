@@ -7,7 +7,8 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import CaseStudy from './pages/CaseStudy/CaseStudy';
 import Contact from './components/Contact';
-
+import Services from './pages/Services/Services'
+import Mainblogs from './pages/CaseStudy/Mainblogs'
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/case-study" element={<CaseStudy />} />
+            <Route path='/services' element={<Services />}/>
+            <Route path='/mainblogs' element={<Mainblogs />}/>
           </Routes>
         </main>
         <Contact />

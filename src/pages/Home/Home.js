@@ -7,18 +7,22 @@ import WelcomeToCurota from '../../components/home/WelcomeToCurota';
 import Cast from '../../components/home/Cast';
 import CaseStudies from '../../components/home/CaseStudies';
 import FeaturedArticles from '../../components/home/FeaturedArticles';
+import Ourservices from '../../components/home/Ourservices';
+import Matrix from '../../components/home/Matrixs'
 
 const Home = () => {
   return (
     <div className="flex flex-col">
       <HeroSection />
       <PitCrewSection />
-      <WelcomeSection />
-      <div className="bg-[#203e40] pt-20 sm:pt-10 sm:pb-10">
+      <Ourservices/>
+      <div className="bg-[#203e40] pt-20 sm:pt-10 ">
         <WelcomeToCurota />
-        <Cast/>
-        <FeaturedArticles/>
+        <WelcomeSection />
+        <Matrix/>
         <CaseStudies/>
+        <FeaturedArticles/>
+        <Cast/>
       </div>
     </div>
   );

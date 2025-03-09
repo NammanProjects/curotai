@@ -8,9 +8,9 @@ const AIPitCrew = () => {
   ];
 
   return (
-    <div className="bg-[#203e40]">
+    <div className="bg-[#284A4E]">
       {/* Animated Logo Strip */}
-      <div className="w-full bg-[#203e40] overflow-hidden relative py-2 md:py-3 lg:py-3">
+      <div className="w-full bg-[#284A4E] overflow-hidden relative py-2 md:py-3 lg:py-3">
         <div className="flex gap-8 logo-animation">
           {/* Duplicating logos for smooth loop */}
           {[...Array(6)].map((_, setIndex) => (
@@ -37,7 +37,7 @@ const AIPitCrew = () => {
       </div>
 
       {/* Rest of your content... */}
-      <div className="pb-[85px] px-4 min-h-[67vh] max-w-[1440px] mx-[10px] sm:mx-auto flex flex-col lg:flex-row gap-0 md:gap-10 pt-0 sm:pt-[4vw]">
+      <div className="pb-[80px] lg:pb-0 min-h-[67vh] max-w-[1440px] mx-[10px] sm:mx-auto xl:mr-[1.5%] flex flex-col lg:flex-row justify-between gap-0 px-7  lg:pl-10 md:gap-1 pt-0 sm:pt-[4vw]">
         <div className="w-full lg:w-[45%] order-2 lg:order-1">
           <h2 className="text-3xl md:text-5xl font-bold text-[#cfebe7] mb-6">
             Your AI Pit Crew
@@ -51,7 +51,7 @@ const AIPitCrew = () => {
           <p className="text-lg text-white mb-8">
             At Curota.ai, we understand that accurate and precise data labeling is the cornerstone of successful AI/ML initiatives.
           </p>
-          <button className=" bg-white text-[#203e40] max-w-[300px] px-6 py-3 rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
+          <button className=" bg-white text-[#203e40] max-w-[300px] px-6 py-3 rounded-2xl mb-[30px] font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all">
             <div className="inline">
             Client Stories
             </div>
@@ -75,8 +75,9 @@ const AIPitCrew = () => {
             </div>
           </button>
         </div>
-        <div className="w-full max-w-[746px] max-h-[436px] lg:w-[55%] h-[300px] sm:h-[400px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden  xs:mb-[20px]">
-          <div className="w-full h-[350px] sm:h-full bg-[url('../public/img/AiPit.png')] bg-contain bg-no-repeat bg-center rounded-xl"></div>
+        <div className="w-full md:max-w-[50vw] xl:max-w-[25wv] max-h-[340px] h-[300px] sm:h-[600px] lg:h-auto order-1 lg:order-2 rounded-xl overflow-hidden mx-auto  xs:mb-[20px]">
+          <div className="w-full h-[350px] sm:h-full bg-[url('../public/img/AiPit.png')] bg-contain bg-no-repeat mx-auto bg-center rounded-xl block lg:hidden"></div>
+          <div className="w-full h-[350px] sm:h-[500px] xl:w-[740px] lg:w-[590px] md:w-[580px]  bg-[url('../public/img/AiPitdesk.png')] bg-contain bg-no-repeat bg-center rounded-xl hidden lg:block"></div>
         </div>
       </div>
       

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-const ServiceCard = ({ title, image, index }) => {
+const ServiceCard = ({ title,title2, image, index }) => {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -13,6 +14,14 @@ const ServiceCard = ({ title, image, index }) => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // No need for a separate function for captions
+
+  const handleInteraction = () => {
+    if (isMobile) {
+      setIsActive(!isActive);
+    }
+  };
 
   const cardVariants = {
     hidden: { 
@@ -48,12 +57,6 @@ const ServiceCard = ({ title, image, index }) => {
     }
   };
 
-  const handleInteraction = () => {
-    if (isMobile) {
-      setIsActive(!isActive);
-    }
-  };
-
   return (
     <motion.div
       variants={cardVariants}
@@ -64,29 +67,35 @@ const ServiceCard = ({ title, image, index }) => {
       onHoverStart={() => !isMobile && setIsActive(true)}
       onHoverEnd={() => !isMobile && setIsActive(false)}
       onClick={handleInteraction}
-      className="w-full sm:w-[160px] md:w-[280px] lg:w-[320px] lg:min-h-[500px] bg-white rounded-[24px] shadow-lg transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden cursor-pointer"
+      className="w-full sm:w-[240px] md:w-[260px] lg:w-[20vw] lg:min-w-[220px] xl:w-[290px] min-h-[350px] lg:min-h-[390px] xl:min-h-[420px] bg-white rounded-[24px] shadow-lg transform transition-all duration-300 hover:shadow-2xl relative overflow-hidden cursor-pointer"
     >
       {/* Default State */}
       <motion.div
         animate={{ opacity: isActive ? 0 : 1 }}
         transition={{ duration: 0.3 }}
-        className="px-3 sm:px-4 pt-3 sm:pt-4"
+        className="p-6 flex flex-col justify-between h-full bg-gradient-to-b from-[#e8f4f3] to-white"
       >
-        <motion.h2 
+        <motion.h3 
           variants={contentVariants}
-          className="text-xl sm:text-xl md:text-2xl font-bold text-[#203e40] mb-3 sm:mb-4 px-1"
+          className="text-center text-xl md:text-xl lg:text-2xl font-bold text-[#203e40] mb-3"
         >
           {title}
-        </motion.h2>
+        </motion.h3>
         <motion.div 
           variants={contentVariants}
-          className="overflow-hidden rounded-[20px] sm:rounded-[24px] mb-3 sm:mb-4"
+          className="flex-grow flex items-center justify-center px-4 "
         >
           <div 
             style={{ backgroundImage: `url(${image})` }} 
-            className="w-full h-[215px] sm:h-[200px] md:h-[320px] lg:h-[425px] bg-cover bg-center rounded-[20px] sm:rounded-[24px]"
+            className="w-full h-[160px] md:h-[140px] lg:h-[160px] bg-contain bg-no-repeat bg-center"
           />
         </motion.div>
+        <motion.p 
+          variants={contentVariants}
+          className="text-[14px] md:text-base lg:text-lg text-center font-semibold font-sans text-[#9b9e9e] mt-4"
+        >
+          {title2}
+        </motion.p>
       </motion.div>
 
       {/* Active State (Hover on Desktop, Click on Mobile) */}
@@ -94,17 +103,23 @@ const ServiceCard = ({ title, image, index }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isActive ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-[#e8f4f3] rounded-[24px] flex flex-col items-center justify-start p-3 sm:p-4 md:p-6 lg:p-8"
+        className="absolute inset-0 bg-[#e8f4f3] rounded-[24px] flex flex-col items-center justify-between p-8 lg:pt-8 pt-5"
       >
-        <h2 className="text-xl sm:text-xl md:text-2xl font-bold text-[#DAA520] mb-2 sm:mb-3 md:mb-6">{title}</h2>
-        <p className="text-[#203e40] text-sm sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-center">
-          Our annotators focus on specific use cases and perfect their craft. This ensures greater accuracy and deeper understanding for every project.
-        </p>
-        <div className="mt-auto">
-          <button className="bg-[#203e40] text-white text-sm sm:text-sm md:text-base lg:text-lg font-medium px-3 sm:px-4 md:px-5 lg:px-6 py-2 md:py-3 rounded-lg transition-all duration-300 hover:bg-[#162b2d] inline-flex items-center group">
-            Read More 
-            <span className="ml-2 sm:ml-2 md:ml-3 text-lg sm:text-xl md:text-2xl transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </button>
+        <div className="text-center">
+          <h3 className="text-xl md:text-2xl font-semibold text-[#8e8e8e] mb-4">Specialised Expertise</h3>
+          <p className="text-[#5d7574] sm:text-base leading-relaxed text-center sm:mb-4 mb-2 text-sm">
+            Our annotators focus on specific use cases and perfect their craft. This ensures greater accuracy and deeper understanding for every project.
+          </p>
+        </div>
+        <div className="w-full sm:mt-4 mt-2">
+          <div className="bg-[#c5d3d1] rounded-2xl py-3 sm:py-4 md:py-3 xl:py-4 text-center">
+            <Link to="/services" className="text-[#203e40] font-medium sm:text-lg text-sm inline-flex items-center hover:underline transition-all duration-300">
+              Read More 
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </motion.div>
     </motion.div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
@@ -9,11 +9,56 @@ const HeroSection = () => {
   };
 
   const [dashOffset, setDashOffset] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+  const animationRef = useRef(null);
+  
+  // Handle video load event
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    
+    if (videoElement) {
+      const handleVideoReady = () => {
+        setVideoLoaded(true);
+      };
+      
+      // Listen for when the video can play through
+      videoElement.addEventListener('canplay', handleVideoReady);
+      
+      // Force video to keep playing even when scrolled out of view
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          // If page is hidden, ensure video is still playing
+          videoElement.play().catch(e => console.log("Video play prevented:", e));
+        }
+      };
+      
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      
+      // Handle scroll events to keep video playing
+      const handleScroll = () => {
+        // Make sure video continues playing regardless of scroll position
+        if (videoElement.paused) {
+          videoElement.play().catch(e => console.log("Video play prevented:", e));
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Clean up event listeners
+      return () => {
+        videoElement.removeEventListener('canplay', handleVideoReady);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, []);
   
   // Animation for the dotted frame - making the dots flow in different directions
+  // Only starts after video is loaded
   useEffect(() => {
-    let animationTimer;
-    let currentPhase = 'initial'; // 'initial', 'clockwise', 'counterclockwise', 'pause'
+    if (!videoLoaded) return;
+    
     let startTime = null;
     
     const animate = (timestamp) => {
@@ -25,42 +70,30 @@ const HeroSection = () => {
       
       // Phase 1: Initial pause (0-4s)
       if (loopTime < 3700) {
-        if (currentPhase !== 'initial') {
-          currentPhase = 'initial';
-        }
         // No animation during initial pause
       } 
       // Phase 2: Clockwise flow (4-6s)
       else if (loopTime < 5700) {
-        if (currentPhase !== 'clockwise') {
-          currentPhase = 'clockwise';
-        }
         setDashOffset(prev => prev - 1); // Negative for clockwise (SVG default direction)
       } 
       // Phase 3: Counterclockwise flow (6-7.5s)
       else if (loopTime < 7200) {
-        if (currentPhase !== 'counterclockwise') {
-          currentPhase = 'counterclockwise';
-        }
         setDashOffset(prev => prev + 1); // Positive for counterclockwise
       }
       // Phase 4: Pause (7.5-9s)
-      else {
-        if (currentPhase !== 'pause') {
-          currentPhase = 'pause';
-        }
-        // No animation during final pause
-      }
+      // No animation during final pause
       
-      animationTimer = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
     
-    animationTimer = requestAnimationFrame(animate);
+    animationRef.current = requestAnimationFrame(animate);
     
     return () => {
-      cancelAnimationFrame(animationTimer);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, []);
+  }, [videoLoaded]); // Only run when videoLoaded changes to true
 
   // Main frame navigation component
   const FrameNav = ({ title }) => (
@@ -90,7 +123,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-cover bg-[url('../public/img/background-image-1.png')] bg-center z-0" />
       
       {/* Main Content Container */}
-      <div className="flex items-center justify-center relative z-10 w-screen min-h-screen xs:mx-0 md:mt-0 mt-[60px] pb-[50px] md:pb-[60px] sm:pb-[20px] md:mb-0">
+      <div className="flex items-center justify-center relative z-10 w-screen min-h-screen xs:mx-0 md:mt-0 mt-[60px] pb-[50px] md:pb-[60px] sm:pb-[20px] lg:mt-[50px] md:mb-0">
         
         <div className="flex flex-col lg:flex-row items-center justify-between gap-[50px] md:gap-15 lg:gap-15 h-full px-0 sm:px-1 lg:px-2 mr-[20px] sm:mr-0">
           {/* Left Content Column */}
@@ -102,7 +135,7 @@ const HeroSection = () => {
           >
             <div className="max-w-lg mx-[30px] xs:mx-[35px] sm:mx-auto">
             <motion.button
-                className="inline-flex items-center justify-center  py-[5px] pr-3 border-[1.5px] border-teal-500 text-black text-sm font-semibold rounded-xl mb-[30px]
+                className="inline-flex items-center justify-center py-[5px] pr-3 border-[1.5px] border-teal-500 text-black text-sm font-semibold rounded-xl mb-[30px]
                           transform transition-all duration-300 shadow-lg font-sans text-center active:scale-95 sm:text-lg"
               >
                 <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-400 mr-2 ml-3"></div>
@@ -160,17 +193,17 @@ const HeroSection = () => {
 
           {/* Right Content Column - Stacked Frames */}
           <motion.div 
-            className="w-full lg:w-3/5 h-1/2 flex items-center justify-center sm:pt-0 lg:pt-0 order-1 lg:order-2"
+            className="w-full lg:w-3/5 h-1/2 flex items-center justify-center sm:pt-0 lg:pt-0 order-1 lg:order-2 mx-auto"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="ml-[100px] mt-[45px] lg:mt-0 relative w-[90vw] h-[35.7vh] sm:w-[90vw] sm:h-[43vw] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[733px] xl:h-[487px] "
-                 style={{ maxWidth: '850px', maxHeight: '487px' }}>
+            <div className="sm:ml-[100px] ml-[48px] mt-[45px] lg:mt-0 relative w-[90vw] h-[35.7vh] sm:w-[90vw] xs:h-[40vh] sm:h-[50vw] xs:mt-[60px] md:w-[65vw] md:h-[37.2vw] lg:w-[55vw] lg:h-[31.5vw] xl:w-[733px] xl:h-[487px] md:mt-[120px] "
+                 style={{ maxWidth: '800px', maxHeight: '487px' }}>
               
               {/* Bottom Frame (Most protrusion, lowest z-index) */}
               <div 
-                className="absolute top-[20px] -left-[60px] xs:top-[44px] xs:-left-[84px] w-full h-full rounded-2xl overflow-hidden border-[1.5px] border-gray-300 max-h-[440px] max-w-[733px]"
+                className="absolute top-[20px] -left-[30px] sm:top-[44px] sm:-left-[84px] w-full h-full rounded-2xl overflow-hidden border-[1.5px] border-gray-300 max-h-[440px] max-w-[733px]"
                 style={{
                   transform: 'scale(0.98)',
                   zIndex: 10,
@@ -186,7 +219,7 @@ const HeroSection = () => {
 
               {/* Middle Frame (Medium protrusion, middle z-index) */}
               <div 
-                className="absolute top-[10px] -left-[50px] xs:top-[22px] xs:-left-[62px] w-full h-full rounded-2xl border-[1.5px] border-gray-300 overflow-hidden max-h-[440px] max-w-[733px]"
+                className="absolute top-[10px] -left-[20px] sm:top-[22px] sm:-left-[62px] w-full h-full rounded-2xl border-[1.5px] border-gray-300 overflow-hidden max-h-[440px] max-w-[733px]"
                 style={{
                   transform: 'scale(0.99)',
                   zIndex: 20,
@@ -202,7 +235,7 @@ const HeroSection = () => {
 
               {/* Main Frame (Top level, highest z-index) */}
               <div 
-                className="absolute top-0 -left-[20px] xs:-left-[40px] w-full h-full rounded-2xl overflow-hidden max-h-[440px] max-w-[733px]"
+                className="absolute top-0 -left-[10px] sm:-left-[40px] w-full h-full rounded-2xl overflow-hidden max-h-[440px] max-w-[733px]"
                 style={{ 
                   zIndex: 30,
                   background: 'rgba(255, 255, 255, 0.9)',
@@ -238,14 +271,20 @@ const HeroSection = () => {
                     </svg>
                   </div>
                   
-                  {/* Video content */}
+                  {/* Video content with persistent playback */}
                   <video 
+                    ref={videoRef}
                     className="w-full h-full object-cover"
                     src="/img/Annotation.mp4"
                     autoPlay
                     muted
                     loop
                     playsInline
+                    preload="auto"
+                    style={{ 
+                      willChange: 'transform', // Optimize for animations
+                      contain: 'strict' // Improve performance
+                    }}
                   />
                 </div>
               </div>

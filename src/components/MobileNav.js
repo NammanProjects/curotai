@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, ArrowLeft } from 'lucide-react';
+import { Menu, ArrowLeft, ExternalLink } from 'lucide-react';
 
 const MobileNav = ({ navItems, caseStudyItems }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState(null);
   const location = useLocation();
 
   // Close menu when location changes
   useEffect(() => {
     setIsOpen(false);
+    setExpandedSection(null);
   }, [location]);
 
   const menuVariants = {
@@ -42,12 +44,34 @@ const MobileNav = ({ navItems, caseStudyItems }) => {
     { text: "Home", to: "/" },
     { text: "Case Study", to: "/case-study", hasDropdown: true },
     { text: "Articles", to: "/articles" },
-    { text: "Services", to: "/services" },
+    { text: "Services", to: "/services", hasDropdown: true },
     { text: "About Us", to: "/about" }
   ];
 
   // Combine with provided navItems if available
   const navigationItems = navItems || fullNavItems;
+
+  // Define dropdown items for services
+  const servicesItems = [
+    { text: "Computer Vision", to: "/services/computer-vision", hasExternalLink: true },
+    { text: "Text Recognition & NLP", to: "/services/nlp", hasExternalLink: true },
+    { text: "GIS:", to: "/services/gis", hasExternalLink: true }
+  ];
+
+  // Use provided case study items or define defaults
+  const caseStudyDropdownItems = caseStudyItems || [
+    { text: "Case Study 1", to: "/case-study/1" },
+    { text: "Case Study 2", to: "/case-study/2" },
+    { text: "Case Study 3", to: "/case-study/3" }
+  ];
+
+  const toggleSection = (section) => {
+    if (expandedSection === section) {
+      setExpandedSection(null);
+    } else {
+      setExpandedSection(section);
+    }
+  };
 
   return (
     <div className="lg:hidden">
@@ -80,7 +104,7 @@ const MobileNav = ({ navItems, caseStudyItems }) => {
                 </button>
                 
                 {/* Logo in top right as shown in image */}
-                <div className="w-10 h-10 overflow-hidden bg-[#304d4f]">
+                <div className="w-10 h-10 overflow-hidden bg-[#304d4f] rounded-md">
                   <img src="/img/Curota_logo_Dark.svg" alt="Logo" className="w-full h-full object-contain opacity-60" />
                 </div>
               </div>
@@ -93,30 +117,122 @@ const MobileNav = ({ navItems, caseStudyItems }) => {
               </div>
 
               {/* Nav Links */}
-              <nav className="flex flex-col mt-auto">
+              <nav className="flex flex-col mt-8">
                 {navigationItems.map((item, index) => (
-                  <div key={index} className="mb-6 flex items-center relative">
-                    {/* Vertical active indicator on left */}
-                    {isActive(item.to) && (
-                      <div className="absolute left-0 top-0 w-1.5 h-full bg-white rounded-r-full" />
+                  <div key={index} className="mb-6">
+                    <div className="flex items-center relative">
+                      {/* Vertical active indicator on left */}
+                      {(isActive(item.to) || 
+                        (item.text === "Services" && location.pathname.startsWith("/services")) ||
+                        (item.text === "Case Study" && location.pathname.startsWith("/case-study"))
+                       ) && (
+                        <div className="absolute -left-4 top-0 w-2 h-full bg-white rounded-r-full" />
+                      )}
+                      
+                      {item.hasDropdown ? (
+                        <div className="flex items-center w-full">
+                          {expandedSection === item.text ? (
+                            // When dropdown is already open, link works normally
+                            <Link
+                              to={item.to}
+                              className="text-white text-3xl flex items-center relative pl-6 py-1"
+                              style={{
+                                textShadow: isActive(item.to) ? '0 0 15px rgba(255, 255, 255, 0.5)' : 'none'
+                              }}
+                            >
+                              {item.text}
+                            </Link>
+                          ) : (
+                            // When dropdown is closed, clicking text also opens the dropdown
+                            <button
+                              onClick={() => toggleSection(item.text)}
+                              className="text-white text-3xl flex items-center relative pl-6 py-1 text-left"
+                              style={{
+                                textShadow: isActive(item.to) ? '0 0 15px rgba(255, 255, 255, 0.5)' : 'none'
+                              }}
+                            >
+                              {item.text}
+                            </button>
+                          )}
+                          <button
+                            onClick={() => toggleSection(item.text)}
+                            className="ml-2 p-2"
+                            aria-label={`Toggle ${item.text} dropdown`}
+                          >
+                            <svg 
+                              width="24" 
+                              height="24" 
+                              viewBox="0 0 24 24" 
+                              className="opacity-70"
+                              style={{
+                                transform: expandedSection === item.text ? 'rotate(45deg)' : 'rotate(0deg)',
+                                transition: 'transform 0.3s ease'
+                              }}
+                            >
+                              <path 
+                                d="M7 17L17 7M17 7H7M17 7V17" 
+                                stroke="currentColor" 
+                                strokeWidth="2" 
+                                fill="none"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      ) : (
+                        <Link
+                          to={item.to}
+                          className="text-white text-3xl flex items-center relative pl-6"
+                          style={{
+                            textShadow: isActive(item.to) ? '0 0 15px rgba(255, 255, 255, 0.5)' : 'none'
+                          }}
+                        >
+                          <span className="py-1">{item.text}</span>
+                        </Link>
+                      )}
+                    </div>
+                    
+                    {/* Dropdown items for Services */}
+                    {item.text === "Services" && expandedSection === "Services" && (
+                      <div className="ml-6 pl-4 mt-4 border-l border-[#2a4749] space-y-3">
+                        {servicesItems.map((service, idx) => (
+                          <div key={idx} className="flex items-center">
+                            <span className="w-2 h-2 bg-white rounded-full mr-3 shrink-0"></span>
+                                                          <Link 
+                              to={service.to} 
+                              className="text-white text-xl flex items-center"
+                              style={{
+                                textShadow: isActive(service.to) ? '0 0 15px rgba(255, 255, 255, 0.5)' : 'none'
+                              }}
+                            >
+                              {service.text}
+                              {service.hasExternalLink && (
+                                <ExternalLink className="w-4 h-4 ml-2 text-gray-400" />
+                              )}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
                     )}
                     
-                    <Link
-                      to={item.to}
-                      className={`text-white text-3xl flex items-center relative pl-6`}
-                    >
-                      <span className="py-1">{item.text}</span>
-                      {item.hasDropdown && (
-                        <svg width="24" height="24" viewBox="0 0 24 24" className="ml-2 opacity-70">
-                          <path 
-                            d="M7 17L17 7M17 7H7M17 7V17" 
-                            stroke="currentColor" 
-                            strokeWidth="2" 
-                            fill="none"
-                          />
-                        </svg>
-                      )}
-                    </Link>
+                    {/* Dropdown items for Case Study */}
+                    {item.text === "Case Study" && expandedSection === "Case Study" && (
+                      <div className="ml-6 pl-4 mt-4 border-l border-[#2a4749] space-y-3">
+                        {caseStudyDropdownItems.map((caseStudy, idx) => (
+                          <div key={idx} className="flex items-center">
+                            <span className="w-2 h-2 bg-white rounded-full mr-3 shrink-0"></span>
+                                                          <Link 
+                              to={caseStudy.to} 
+                              className="text-white text-xl"
+                              style={{
+                                textShadow: isActive(caseStudy.to) ? '0 0 15px rgba(255, 255, 255, 0.5)' : 'none'
+                              }}
+                            >
+                              {caseStudy.text}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </nav>
@@ -148,13 +264,13 @@ const MobileNav = ({ navItems, caseStudyItems }) => {
               </div>
               
               {/* Logo placement at the bottom */}
-              <div className="w-full max-w-[800px] px-4">
-            <img 
-              src="/img/wordmark1.png" 
-              alt="Curota.ai watermark"
-              className="w-full opacity-15 object-fit object-center h-17 md:h-27"
-            />
-          </div>
+              <div className="w-full max-w-[500px] bottom-0 px-4 mx-auto mt-auto">
+                <img 
+                  src="/img/wordmark1.png" 
+                  alt="Curota.ai watermark"
+                  className="w-full opacity-15 object-fit object-center h-17 md:h-27"
+                />
+              </div>
             </div>
           </motion.div>
         )}

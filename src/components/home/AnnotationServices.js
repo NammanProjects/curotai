@@ -7,18 +7,22 @@ const AnnotationServices = () => {
     { 
       title: "Segmentation", 
       image: "/img/box1.png",
+      title2:"Precision for Object Separation"
     },
     { 
       title: "Keypoint", 
       image: "/img/box2.png",
+      title2:"Precision Mapping for Details"
     },
     { 
       title: "Polygon", 
       image: "/img/box3.png",
+      title2:"Custom Shapes For Irregularity"
     },
     { 
       title: "Bounding Box", 
       image: "/img/box4.png",
+      title2:"Versatility in Object Detection"
     }
   ];
 
@@ -36,8 +40,8 @@ const AnnotationServices = () => {
   };
 
   return (
-    <div className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[46px] bg-[url('../public/img/background-image-0.png')] bg-cover bg-center overflow-hidden min-h-[81vh]">
-      <div className="max-w-screen-xl mx-auto text-center mb-6 sm:mb-[30px]">
+    <div className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-[46px] bg-[url('../public/img/background-image-0.png')] bg-cover bg-center overflow-hidden min-h-[76vh]">
+      <div className="md:max-w-screen-xl w-auto lg:px-[25px] xl:px-0 mx-auto text-center mb-6 sm:mb-[30px]">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +60,7 @@ const AnnotationServices = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-[100px] mt-8 sm:mt-10 md:mt-[60px] justify-items-center"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-y-[50px]  mt-8 sm:mt-10 md:mt-[60px] justify-items-center"
         >
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} index={index} />

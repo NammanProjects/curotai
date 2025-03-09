@@ -59,10 +59,10 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <div className="h-[72vh] min-h-[620px] bg-cover bg-[url('../public/img/background-image-0.png')] bg-center pt-[61px] ">
+    <div className="h-[72vh] min-h-[620px] bg-cover bg-[url('../public/img/background-image-0.png')] bg-center pt-[40px] ">
       <div className="mb-auto sm:px-4 h-full flex flex-col justify-center pb-[60px] ">
         <div className="text-center mb-20">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#203e40]">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 text-[#203e40]">
             Why Trust us?
           </h1>
         </div>
@@ -89,7 +89,7 @@ const TestimonialCarousel = () => {
             {testimonials.map((testimonial) => (
               <div 
                 key={testimonial.id}
-                className="max-w-[92vw] md:max-w-[700px] h-[300px] flex-none snap-center bg-white rounded-xl p-6 shadow-lg"
+                className="max-w-[92vw] md:max-w-[550px] h-[350px] flex-none snap-center bg-white rounded-xl p-6 shadow-lg"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <img
