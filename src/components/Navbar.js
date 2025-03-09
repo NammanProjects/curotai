@@ -46,7 +46,7 @@ const Header = () => {
   ];
 
   const caseStudyItems = [
-    { text: "Case Study 1", to: "/case-study" },
+    { text: "Case Study 1", to: "/mainblogs/case-study/1" },
     { text: "Case Study 2", to: "/case-study/2" },
     { text: "Case Study 3", to: "/case-study/3" },
   ];
@@ -90,7 +90,7 @@ const Header = () => {
     if (activeItemIndex !== -1) return activeItemIndex;
     
     // For case study subpaths
-    if (location.pathname.startsWith('/case-study/')) return 1;
+    if (location.pathname.startsWith('/mainblogs/')) return 1;
     
     // For other potential subpaths
     if (location.pathname.startsWith('/services')) return 2;
